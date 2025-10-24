@@ -1,5 +1,32 @@
 import random
+import sys
 from ascii_art import STAGES
+
+
+"""
+Clearer Display: Improve the output formatting for readability.
+Additional Stages: Expand your STAGES list in ascii_art.py for a smoother transition as the snowman melts.
+"""
+
+
+def get_valid_input():
+    while True:
+        guess = input("Guess a letter: ").strip().lower()
+        if len(guess) != 1 or not guess.isalpha():
+            print("Please enter a single alphabetical character.")
+        else:
+            return guess
+
+
+def play_again():
+    while True:
+        choice = input("Would you like to play again? (y/n): ").strip().lower()
+        if choice == "y":
+            return True
+        elif choice == "n":
+            return False
+        else:
+            print("Please enter a valid choice.")
 
 
 def get_random_word():
@@ -8,9 +35,9 @@ def get_random_word():
 
 
 def display_game_state(mistakes, secret_word, guessed_letters):
-    # Display the snowman stage for the current number of mistakes.
+    """Display the snowman stage for the current number of mistakes."""
+
     print(STAGES[mistakes])
-    # Build a display version of the secret word.
     display_word = ""
     for letter in secret_word:
         if letter in guessed_letters:
@@ -33,7 +60,7 @@ def play_game():
     display_game_state(mistakes, secret_word, guessed_letters)
 
     while mistakes < (len(STAGES) - 1):
-        guess = input("Guess a letter: ").lower()
+        guess = get_valid_input()
         if guess in guessed_letters:
             print("You already guessed that letter.")
         elif guess in secret_word:
