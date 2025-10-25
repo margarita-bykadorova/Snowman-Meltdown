@@ -5,7 +5,6 @@ from ascii_art import STAGES
 
 """
 Clearer Display: Improve the output formatting for readability.
-Additional Stages: Expand your STAGES list in ascii_art.py for a smoother transition as the snowman melts.
 """
 
 
