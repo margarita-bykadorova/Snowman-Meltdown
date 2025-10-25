@@ -1,59 +1,79 @@
 # Snowman ASCII Art stages
 STAGES = [
     # Stage 0: Full snowman
-    """
+    r"""
+    
       ___  
      /___\ 
      (o o) 
      ( : ) 
      ( : ) 
+
+
     """,
     # Stage 1: Bottom starting to slump
-    """
+    r"""
+    
+    
       ___  
      /___\ 
      (o o) 
      ( : ) 
-    ~~. .~~
+    ~~~~~~~~~~
+    
     """,
     # Stage 2: Lower body gone
-    """
+    r"""
+    
+    
       ___  
      /___\ 
      (o o) 
-     ( . ) 
-     ~~~~~~~~
+     (   ) 
+    ~~~~~~~~~~~~~
+    
     """,
-    # Stage 3: Head starting to droop
-    """
+    # Stage 3: Head drooping
+    r"""
+    
+    
       ___  
      /___\ 
      (o .) 
      (   )  
-     ~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~
+    
     """,
-# Stage 4: Head drooping, larger puddle
-    """
+    # Stage 4: Head melts, hat sinks halfway
+    r"""
+
+
+
       ___  
      /___\ 
      (o .) 
-     ~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~
+    
     """,
-    # Stage 5: Head melting into puddle
-    """
+    # Stage 5: Hat closer to puddle
+    r"""
+
+
+
+
       ___  
      /___\ 
-     (. .) 
-     ~~~~~~~~~~~~~~
+    ~~~~~~~~~~~~~~~~~~~~~~~~~
+    
     """,
-    # Stage 6: Hat sinking, big puddle
-    """
-      ___  
-     /___\ 
-     ~~~~~~~~~~~~~~~~
-    """,
-    # Stage 7: Final puddle, no snowman 🫡
-    """
-     ~~~~~~~~~~~~~~~~~~~
+    # Stage 7: Only puddle remains 🫡
+    r"""
+
+
+
+
+
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    
     """
 ]
