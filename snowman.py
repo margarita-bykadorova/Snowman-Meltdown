@@ -1,14 +1,15 @@
-import random
+import sys
 import game_logic
-
-WORDS = ["python", "git", "github", "snowman", "meltdown"]
 
 
 def main():
+    """The main function"""
+
     while True:
-        play_game()
-        if not play_again():
+        game_logic.play_game()
+        if not game_logic.play_again():
             sys.exit()
+
 
 if __name__ == "__main__":
     main()
