@@ -43,10 +43,9 @@ def play_again():
         choice = input("Would you like to play again? (y/n): ").strip().lower()
         if choice == "y":
             return True
-        elif choice == "n":
+        if choice == "n":
             return False
-        else:
-            print("Please enter y or n.")
+        print("Please enter y or n.")
 
 
 def get_random_word():
@@ -152,4 +151,3 @@ def play_game():
 
     print(f"The word was: {secret_word}")
     print("\n💧 The snowman has melted... better luck next time. 💧\n")
-
