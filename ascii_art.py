@@ -1,4 +1,11 @@
-# Snowman ASCII Art stages
+"""
+ascii_art.py
+------------
+Stores the ASCII art stages for the melting snowman.
+Each stage represents the snowman's gradual melting process.
+"""
+
+
 STAGES = [
     # Stage 0: Full snowman
     r"""

@@ -1,11 +1,27 @@
+"""
+game_logic.py
+-------------
+Contains the main logic for the Snowman Meltdown game, including:
+- Input handling
+- Game flow control
+- Display of ASCII art and game state
+"""
+
 import random
 from ascii_art import STAGES
 
 WORDS = ["python", "git", "github", "snowman", "meltdown"]
 
 
+# -------------------- Input & Helpers --------------------
+
 def get_valid_input():
-    """Gets a single alphabetical character"""
+    """
+    Prompt the player to guess a single letter.
+
+    Returns:
+        str: A single alphabetical character in lowercase.
+    """
 
     while True:
         guess = input("Guess a letter: ").strip().lower()
@@ -16,7 +32,12 @@ def get_valid_input():
 
 
 def play_again():
-    """Let's the user choose to play again or quit the game."""
+    """
+    Ask the player if they want to play again.
+
+    Returns:
+        bool: True if the player chooses 'y', False if 'n'.
+    """
 
     while True:
         choice = input("Would you like to play again? (y/n): ").strip().lower()
@@ -25,22 +46,49 @@ def play_again():
         elif choice == "n":
             return False
         else:
-            print("Please enter a valid choice.")
+            print("Please enter y or n.")
 
 
 def get_random_word():
-    """Selects a random word from the list."""
+    """
+    Select a random word from the word list.
+
+    Returns:
+        str: A randomly chosen word from WORDS.
+    """
     return random.choice(WORDS)
 
 
 def print_centered(stage: str, width: int = 40):
-    """Print each line of the ASCII art centered in a fixed width."""
+    """
+    Print each line of a multi-line string centered in a fixed width.
+
+    Args:
+        stage (str): The ASCII art or text block to center.
+        width (int): Total width of the line. Default is 40.
+    """
+
     for line in stage.splitlines():
         print(f"{line:^{width}}")
 
 
+# -------------------- Display --------------------
+
 def display_game_state(mistakes, secret_word, guessed_letters, wrong_letters):
-    """Show the ASCII stage, the current word, wrong letters, and tries left."""
+    """
+    Display the current game state, including:
+    - Snowman ASCII art for the current number of mistakes
+    - The secret word with underscores for unguessed letters
+    - Wrong guesses
+    - Tries left
+
+    Args:
+        mistakes (int): Number of incorrect guesses so far.
+        secret_word (str): The word the player is trying to guess.
+        guessed_letters (list): Letters the player has correctly guessed.
+        wrong_letters (list): Letters the player has guessed incorrectly.
+    """
+
     print("=" * 40)
     print(f"{'SNOWMAN MELTDOWN':^40}")
     print("=" * 40)
@@ -58,15 +106,26 @@ def display_game_state(mistakes, secret_word, guessed_letters, wrong_letters):
     print("-" * 40, "\n")
 
 
+# -------------------- Main Game --------------------
+
 def play_game():
-    """The game flow."""
+    """
+    Run a single round of the Snowman Meltdown game.
+
+    The function:
+    - Selects a random secret word
+    - Repeatedly prompts the player to guess letters
+    - Updates and displays the game state
+    - Ends when the word is fully guessed or the snowman melts.
+    """
+
     secret_word = get_random_word()
     guessed_letters = []
     wrong_letters = []
     mistakes = 0
     max_mistakes = len(STAGES) - 1
 
-    print("Welcome to Snowman Meltdown!")
+    print(f"{'Welcome to Snowman Meltdown!':^40}")
     display_game_state(mistakes, secret_word, guessed_letters, wrong_letters)
 
     while mistakes < max_mistakes:
@@ -83,7 +142,7 @@ def play_game():
 
             # Win when all unique letters are found
             if set(secret_word) <= set(guessed_letters):
-                print("🎉 You saved the snowman!")
+                print("\n❄️ The snowman survived another day! ❄️\n")
                 return
         else:
             mistakes += 1
@@ -91,5 +150,6 @@ def play_game():
             print(f"Oops! '{guess}' is not in the word.")
             display_game_state(mistakes, secret_word, guessed_letters, wrong_letters)
 
-    print("💧 You didn't save the snowman!")
+    print(f"The word was: {secret_word}")
+    print("\n💧 The snowman has melted... better luck next time. 💧\n")
 
